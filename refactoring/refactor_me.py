@@ -1,6 +1,5 @@
 
 
-
 class parenclass:
 
     def GetFirstName(self, fullname):
@@ -12,13 +11,13 @@ class parenclass:
 
 class Child_class(parenclass):
 
-    def __init__(self, age=None):  
+    def __init__(self, age=None):
         self.age = age
 
     def hey(self, fullname):
-        if self.age and self.age < 18: 
+        if self.age and self.age < 18:
             print("What's up"+self.GetFirstName(fullname)+"?")
-            
+
         elif self.age and self.age>18:
             super().hey(fullname)
 
@@ -27,10 +26,9 @@ class Child_class(parenclass):
 
 if __name__ == "__main__":
 
+    a = parenclass()
 
-    a = parenclass()    
-
-    b = Child_class()   
+    b = Child_class()
 
     c = Child_class(14)
 
