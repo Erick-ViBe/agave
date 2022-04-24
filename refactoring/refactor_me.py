@@ -1,39 +1,38 @@
 
 
-class parenclass:
+class ParentClass:
 
-    def GetFirstName(self, fullname):
-        return fullname.split(" ")[0]
+    def __init__(self, fullname):
+        self.fullname = fullname
 
-    def hey(self, fullname):
-        print("Hello"+self.GetFirstName(fullname))
+    def get_first_name(self):
+        return self.fullname.split(" ")[0]
+
+    def hey(self):
+        print(f"Hello {self.get_first_name()}")
 
 
-class Child_class(parenclass):
+class ChildClass(ParentClass):
 
-    def __init__(self, age=None):
+    def __init__(self, fullname, age=None):
+        super().__init__(fullname)
         self.age = age
 
-    def hey(self, fullname):
+    def hey(self):
         if self.age and self.age < 18:
-            print("What's up"+self.GetFirstName(fullname)+"?")
+            print(f"What's up {self.get_first_name()}?")
+        else:
+            super().hey()
 
-        elif self.age and self.age>18:
-            super().hey(fullname)
-
-        elif not self.age:
-            super().hey(fullname)
 
 if __name__ == "__main__":
 
-    a = parenclass()
+    fullname = "Alfredo Topete Escamilla"
 
-    b = Child_class()
+    a = ParentClass(fullname)
+    b = ChildClass(fullname)
+    c = ChildClass(fullname, 14)
 
-    c = Child_class(14)
-
-    a.hey("Alfredo Topete Escamilla")
-
-    b.hey("Alfredo Topete Escamilla")
-
-    c.hey("Alfredo Topete Escamilla")
+    a.hey()
+    b.hey()
+    c.hey()
