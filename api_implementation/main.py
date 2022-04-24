@@ -25,7 +25,7 @@ class ShoppingByCategory(Resource):
 
         for shopping in shopping_list:
             discounted_price = shopping['price'] * (1-(shopping['percentage_discount']/100))
-            shopping_price = round(discounted_price+shopping_by_category.get(shopping['category'], 0), 2)
+            shopping_price = round((discounted_price*shopping['quantity'])+shopping_by_category.get(shopping['category'], 0), 2)
             shopping_by_category[shopping['category']] = shopping_price
 
         return shopping_by_category
